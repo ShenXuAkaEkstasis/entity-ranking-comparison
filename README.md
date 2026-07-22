@@ -75,10 +75,10 @@ Represents structural importance within the knowledge network.
 
 Spearman correlation between IMDb ranking and Wikipedia PageRank:
 
-
+```
 Spearman rho = 0.2275
 p-value < 0.001
-
+```
 
 The result indicates a statistically significant but weak correlation.
 
@@ -121,19 +121,19 @@ Examples where IMDb ranking is higher than graph centrality:
 
 ## Repository Structure
 
-
+```
 scripts/
-Data collection and analysis scripts
+    Data collection and analysis scripts
 
 data/
-Local generated datasets
+    Generated datasets (not included in repository)
 
 results/
-Experimental outputs
+    Experimental outputs
 
 figures/
-Visualization results
-
+    Visualization results
+```
 
 ---
 
@@ -143,9 +143,11 @@ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
 
 Run scripts sequentially:
 
+```bash
 python3 scripts/01_prepare_dataset.py
 python3 scripts/02_match_wikidata.py
 python3 scripts/03_download_links.py
@@ -155,16 +157,10 @@ python3 scripts/06_figures.py
 python3 scripts/07_topk_overlap.py
 python3 scripts/08_divergence_analysis.py
 python3 scripts/09_graph_statistics.py
-Research Direction
+```
+
+---
+
+## Research Direction
 
 This project explores the difference between popularity ranking and knowledge-based entity ranking, providing an empirical foundation for understanding entity importance in AI-era information systems.
-
-
-保存。
-
-然后：
-
-```bash
-git add README.md
-git commit -m "Add project README"
-git push
