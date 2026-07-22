@@ -1,6 +1,9 @@
 raw_data/
 
+data/*.csv
 data/*.graphml
+
+.vscode/
 
 __pycache__/
 
