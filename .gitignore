@@ -1,0 +1,7 @@
+raw_data/
+
+data/*.graphml
+
+__pycache__/
+
+.DS_Store

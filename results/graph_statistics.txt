@@ -1,0 +1,6 @@
+Nodes: 482
+Edges: 13690
+Density: 0.059049
+Average Degree: 56.80
+Weak Components: 1
+Largest Component: 482
