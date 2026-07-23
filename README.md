@@ -1,21 +1,27 @@
-# Entity Ranking Comparison
+# Entity Importance Representation for AI Knowledge Systems
 
 ## Overview
 
-This repository supports the study **“From Audience Evaluation to Structural Authority: Measuring Entity Importance in Knowledge Networks for AI-Mediated Information Systems.”**
+This repository supports the study **“Representing Entity Importance in AI Knowledge Systems: A Dual-Signal Framework of Audience Evaluation and Structural Authority.”**
 
-The project compares two distinct dimensions of entity importance using movie entities as an empirical validation domain:
+The study treats entity importance as a knowledge-representation problem. Instead of compressing importance into one scalar score, it preserves two interpretable dimensions:
 
-- **Audience evaluation:** an IMDb rating-based audience ranking constructed from average user ratings, with vote count used for eligibility and tie breaking.
-- **Structural authority:** PageRank calculated over a directed network of hyperlinks among English Wikipedia movie pages.
+- **Audience evaluation, `A(e)`:** an IMDb rating-based audience ranking constructed from average user ratings, with vote count used for eligibility and tie breaking.
+- **Structural authority, `S(e)`:** PageRank calculated over a directed network of hyperlinks among English Wikipedia movie pages.
 
-The study does **not** use IMDb's proprietary popularity chart, Wikipedia pageviews, or Wikidata PageRank.
+The entity representation is:
+
+```text
+I(e) = [A(e), S(e)]
+```
+
+The study tests whether these dimensions are sufficiently redundant to be collapsed into one score. It does **not** use IMDb's proprietary popularity chart, Wikipedia pageviews, or Wikidata PageRank.
 
 ## Research Questions
 
-1. How strongly does an audience-evaluation ranking correlate with knowledge-network-based authority?
-2. Do audience-evaluation and knowledge-network rankings identify the same important entities?
-3. What types of entities are emphasized differently by the two ranking approaches?
+1. Are audience evaluation and structural authority sufficiently correlated to be treated as one dimension of entity importance?
+2. Do the two dimensions produce the same high-priority entity sets?
+3. What information is exposed by entities whose positions diverge strongly across the two dimensions?
 
 ## Dataset Construction
 
@@ -56,13 +62,13 @@ Final graph statistics:
 - Density: 0.059049
 - Weakly connected components: 1
 
-## Ranking Methods
+## Operationalized Dimensions
 
-### IMDb Rating-Based Audience Ranking
+### Audience Evaluation
 
-Within the final 482-entity sample, movies are ordered by weighted average IMDb user rating in descending order. Vote count resolves equal-rating cases. This measure represents **audience evaluation**, not direct exposure, attention, or population-level popularity.
+Within the final 482-entity sample, movies are ordered by weighted average IMDb user rating in descending order. Vote count resolves equal-rating cases. This dimension represents audience evaluation, not direct exposure, attention, or population-level popularity.
 
-### Wikipedia PageRank
+### Structural Authority
 
 PageRank is calculated on the directed Wikipedia hyperlink graph with NetworkX using:
 
@@ -80,7 +86,7 @@ PageRank scores are sorted in descending order and converted to ordinal ranks.
 - Top-50 overlap: 30%
 - Top-100 overlap: 34%
 
-The results indicate that audience evaluation and structural authority are related but distinct dimensions of entity importance.
+The results indicate that audience evaluation and structural authority are non-redundant dimensions. The paper argues that AI knowledge systems should preserve them separately before task-specific aggregation or entity selection.
 
 ## Repository Structure
 
